@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOSPath | iOS Öğrenme Asistanı</title>
+  <script>
+    try {
+      const storedTheme = localStorage.getItem("iospath-theme");
+      const theme = storedTheme === "dark" || storedTheme === "light"
+        ? storedTheme
+        : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+    } catch (error) {
+      document.documentElement.dataset.theme = "light";
+    }
+  </script>
+  <link rel="stylesheet" href="css/iospath.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="iospath.html" aria-label="iOSPath ana sayfa">
+      <span class="brand-mark">iP</span>
+      <span>iOSPath</span>
+    </a>
+    <nav class="nav-links" aria-label="Ana menü">
+      <a class="active" href="iospath.html">Panel</a>
+      <a href="roadmap.html">Rota</a>
+      <a href="#resources">Kaynaklar</a>
+      <a href="interview.html">Mülakat</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Tema değiştir" title="Tema değiştir">
+      <span aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="dashboard">
+      <div class="hero-content">
+        <p class="eyebrow">Swift, SwiftUI, UIKit ve Core Data için akıllı öğrenme rotası</p>
+        <h1>iOS geliştirici yolculuğunu adım adım yönet.</h1>
+        <p class="hero-copy">
+          iOSPath, yeni başlayan geliştiricilerin dağınık kaynaklar arasında kaybolmadan ilerlemesini sağlar. Konular sırayla açılır, ilerleme kaydedilir ve öğrenme süreci final portfolyo çıktısına dönüşür.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="roadmap.html">Rotaya Başla</a>
+          <a class="secondary-button" href="interview.html">Mülakata Hazırlan</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="iOSPath teknik yetkinlik görseli">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="screen-status">
+              <span>09:41</span>
+              <span>iOSPath</span>
+            </div>
+            <div class="screen-title">
+              <span>Current Track</span>
+              <strong>SwiftUI Foundations</strong>
+            </div>
+            <div class="screen-progress">
+              <div>
+                <span>Progress</span>
+                <strong>72%</strong>
+              </div>
+              <div class="screen-ring" aria-hidden="true"></div>
+            </div>
+            <div class="screen-modules">
+              <div class="path-node active">
+                <span>01</span>
+                <strong>Swift</strong>
+              </div>
+              <div class="path-node current">
+                <span>02</span>
+                <strong>SwiftUI</strong>
+              </div>
+              <div class="path-node locked">
+                <span>03</span>
+                <strong>Architecture</strong>
+              </div>
+            </div>
+            <div class="screen-footer-card">
+              <span>Next portfolio proof</span>
+              <strong>Reusable dashboard component</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-grid" aria-label="Kişiselleştirilmiş ilerleme paneli">
+      <article class="metric-card">
+        <span class="metric-label">Genel İlerleme</span>
+        <strong id="progressPercent">0%</strong>
+        <div class="progress-track"><span id="progressBar"></span></div>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Tamamlanan Konu</span>
+        <strong id="completedCount">0</strong>
+        <p>Öğrenme rotasındaki aktif başarı sayısı</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Portfolyo Durumu</span>
+        <strong id="portfolioStatus">Devam</strong>
+        <p>Final proje çıktısına hazırlık durumu</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Sonraki Adım</span>
+        <strong id="nextStep">Swift Temelleri</strong>
+        <p>Kilitler önce temel konularla açılır</p>
+      </article>
+    </section>
+
+    <section class="insight-grid" id="dashboardInsights" aria-label="Detaylı öğrenme istatistikleri"></section>
+
+    <section class="section-heading">
+      <p class="eyebrow">Başarı sistemi</p>
+      <h2>İlerlemeye göre açılan rozetler</h2>
+    </section>
+    <section class="badge-grid" id="badgeGrid" aria-label="Kazanılan rozetler"></section>
+
+    <section class="section-heading" id="resources">
+      <p class="eyebrow">Dinamik kaynak kütüphanesi</p>
+      <h2>Konuya göre filtrelenen çalışma kaynakları</h2>
+    </section>
+
+    <section class="resource-tools">
+      <label for="resourceFilter">Kaynak alanı</label>
+      <select id="resourceFilter">
+        <option value="all">Tüm kaynaklar</option>
+        <option value="Getting Started">Getting Started</option>
+        <option value="App Design">App Design</option>
+        <option value="Swift">Swift</option>
+        <option value="SwiftUI">SwiftUI</option>
+        <option value="Data Modeling">Data Modeling</option>
+        <option value="App Development">App Development</option>
+        <option value="Machine Learning and AI">Machine Learning and AI</option>
+        <option value="Spatial Computing">Spatial Computing</option>
+        <option value="App Distribution">App Distribution</option>
+      </select>
+      <label for="resourceSearch">Kaynak ara</label>
+      <input id="resourceSearch" type="search" placeholder="SwiftUI, testing, Apple...">
+      <button class="ghost-button" id="favoriteResourceToggle" type="button">Favoriler</button>
+    </section>
+    <section class="resource-grid" id="resourceGrid"></section>
+
+  </main>
+
+  <footer class="footer">
+    <p>iOSPath, Internet ve Web Programlama I proje prototipi için hazırlanmıştır.</p>
+  </footer>
+
+  <script src="js/iospath-data.js"></script>
+  <script src="js/iospath-storage.js"></script>
+  <script src="js/iospath-app.js"></script>
+</body>
+</html>

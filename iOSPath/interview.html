@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOSPath | Mülakat Hazırlığı</title>
+  <script>
+    try {
+      const storedTheme = localStorage.getItem("iospath-theme");
+      const theme = storedTheme === "dark" || storedTheme === "light"
+        ? storedTheme
+        : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+    } catch (error) {
+      document.documentElement.dataset.theme = "light";
+    }
+  </script>
+  <link rel="stylesheet" href="css/iospath.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="iospath.html" aria-label="iOSPath ana sayfa">
+      <span class="brand-mark">iP</span>
+      <span>iOSPath</span>
+    </a>
+    <nav class="nav-links" aria-label="Ana menü">
+      <a href="iospath.html">Panel</a>
+      <a href="roadmap.html">Rota</a>
+      <a href="iospath.html#resources">Kaynaklar</a>
+      <a class="active" href="interview.html">Mülakat</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Tema değiştir" title="Tema değiştir">
+      <span aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <p class="eyebrow">Mülakat hazırlık modülü</p>
+      <h1>Junior iOS geliştirici soruları</h1>
+      <p>
+        Swift, SwiftUI, veri modelleme ve uygulama geliştirme başlıklarından gelen temel sorularla teknik mülakat pratiği yapılır. Tamamlanan rota adımları gelişim günlüğünde final portfolyo hazırlığına dönüşür.
+      </p>
+    </section>
+
+    <section class="interview-dashboard" aria-label="Mülakat özeti">
+      <article>
+        <span>Toplam Soru</span>
+        <strong id="questionTotal">0</strong>
+      </article>
+      <article>
+        <span>Aktif Filtre</span>
+        <strong id="activeFilterLabel">Tümü</strong>
+      </article>
+      <article>
+        <span>Odak</span>
+        <strong id="interviewScore">0%</strong>
+      </article>
+    </section>
+
+    <section class="interview-performance" id="interviewPerformance" aria-label="Mülakat performans özeti"></section>
+
+    <section class="interview-tools" aria-label="Mülakat filtreleri">
+      <label for="questionCategoryFilter">Kategori</label>
+      <select id="questionCategoryFilter">
+        <option value="all">Tüm kategoriler</option>
+      </select>
+      <label for="questionLevelFilter">Seviye</label>
+      <select id="questionLevelFilter">
+        <option value="all">Tüm seviyeler</option>
+        <option value="Başlangıç">Başlangıç</option>
+        <option value="Orta">Orta</option>
+        <option value="İleri">İleri</option>
+      </select>
+    </section>
+
+    <section class="interview-panel">
+      <div class="question-card featured-question">
+        <span id="questionLevel">Başlangıç</span>
+        <small id="questionCategory">Swift</small>
+        <h3 id="questionTitle">Soru yükleniyor</h3>
+        <p id="questionAnswer"></p>
+        <div class="question-actions">
+          <button class="secondary-button" id="toggleAnswerButton" type="button">Cevabı Gizle</button>
+          <button class="primary-button" id="nextQuestionButton" type="button">Rastgele Soru</button>
+          <button class="ghost-button" id="knownQuestionButton" type="button">Bildim</button>
+          <button class="ghost-button" id="reviewQuestionButton" type="button">Tekrar Çalış</button>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <h3>Gelişim Günlüğü</h3>
+        <p>Tamamlanan konular, kullanıcının final portfolyo hazırlığını ve öğrenme gelişimini gösterir.</p>
+        <ul id="portfolioList"></ul>
+      </div>
+    </section>
+
+    <section class="question-bank" aria-label="Soru bankası">
+      <div class="section-heading compact-heading">
+        <p class="eyebrow">Soru bankası</p>
+        <h2>Kategorilere ayrılmış iOS mülakat soruları</h2>
+      </div>
+      <div class="question-list" id="questionList"></div>
+    </section>
+
+    <section class="portfolio-report-section" aria-label="Final portfolyo raporu">
+      <div class="section-heading compact-heading">
+        <p class="eyebrow">Final portfolyo raporu</p>
+        <h2>İlerleme, kanıt linkleri ve mülakat durumunu tek özet halinde hazırla</h2>
+      </div>
+      <div class="portfolio-report-card">
+        <pre id="portfolioReport"></pre>
+        <div class="question-actions">
+          <button class="secondary-button" id="copyPortfolioButton" type="button">Özeti Kopyala</button>
+          <button class="primary-button" id="downloadPortfolioButton" type="button">TXT İndir</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>iOSPath, Internet ve Web Programlama I proje prototipi için hazırlanmıştır.</p>
+  </footer>
+
+  <script src="js/iospath-data.js"></script>
+  <script src="js/iospath-storage.js"></script>
+  <script src="js/iospath-app.js"></script>
+</body>
+</html>

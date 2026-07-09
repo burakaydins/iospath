@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOSPath | Öğrenme Rotası</title>
+  <script>
+    try {
+      const storedTheme = localStorage.getItem("iospath-theme");
+      const theme = storedTheme === "dark" || storedTheme === "light"
+        ? storedTheme
+        : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+    } catch (error) {
+      document.documentElement.dataset.theme = "light";
+    }
+  </script>
+  <link rel="stylesheet" href="css/iospath.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="iospath.html" aria-label="iOSPath ana sayfa">
+      <span class="brand-mark">iP</span>
+      <span>iOSPath</span>
+    </a>
+    <nav class="nav-links" aria-label="Ana menü">
+      <a href="iospath.html">Panel</a>
+      <a class="active" href="roadmap.html">Rota</a>
+      <a href="iospath.html#resources">Kaynaklar</a>
+      <a href="interview.html">Mülakat</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Tema değiştir" title="Tema değiştir">
+      <span aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <p class="eyebrow">Profesyonel iOS öğrenme rotası</p>
+      <h1>Fikirden portfolyoya uzanan sağlam iOS geliştirme planı</h1>
+      <p>
+        Rota; Apple Develop in Swift, SwiftUI Pathway, Swift.org dil referansı, Stanford CS193p, WWDC oturumları ve App Store dağıtım süreci dikkate alınarak hazırlanmıştır. Her adımda öğrenilecek konu, izlenecek video kaynağı, pratik görev, mini proje çıktısı ve portfolyoya eklenebilecek kanıt yer alır.
+      </p>
+    </section>
+
+    <section class="beginner-guide" aria-label="Yeni başlayanlar için kullanım rehberi">
+      <article>
+        <span>1</span>
+        <h3>Kavramı Netleştir</h3>
+        <p>Önce modülün amacını, kaynak notunu ve profesyonel odak başlığını oku. Hangi problemi çözdüğünü bilmeden koda geçme.</p>
+      </article>
+      <article>
+        <span>2</span>
+        <h3>Çıktı Üret</h3>
+        <p>Her modülde küçük ama teslim edilebilir bir ekran, model, test, README bölümü veya demo proje oluştur.</p>
+      </article>
+      <article>
+        <span>3</span>
+        <h3>Kanıtla ve İlerle</h3>
+        <p>Kontrol listesini tamamladıktan sonra ekran görüntüsü, GitHub commit'i veya kısa teknik notu portfolyoya ekle.</p>
+      </article>
+    </section>
+
+    <section class="roadmap-tools" aria-label="Rota arama ve filtreleme">
+      <div>
+        <label for="roadmapSearch">Rota içinde ara</label>
+        <input id="roadmapSearch" type="search" placeholder="SwiftUI, test, networking...">
+      </div>
+      <div>
+        <label for="roadmapStatusFilter">Durum</label>
+        <select id="roadmapStatusFilter">
+          <option value="all">Tüm durumlar</option>
+          <option value="Açık">Açık</option>
+          <option value="Tamamlandı">Tamamlandı</option>
+          <option value="Kilitli">Kilitli</option>
+        </select>
+      </div>
+      <div>
+        <label for="roadmapLevelFilter">Seviye</label>
+        <select id="roadmapLevelFilter">
+          <option value="all">Tüm seviyeler</option>
+          <option value="Başlangıç">Başlangıç</option>
+          <option value="Orta">Orta</option>
+          <option value="İleri">İleri</option>
+        </select>
+      </div>
+      <strong id="roadmapResultCount">20 modül</strong>
+    </section>
+
+    <section class="roadmap-layout">
+      <aside class="skill-tree" aria-label="Yetkinlik ağacı">
+        <h3>Apple Eğitim Bölümleri</h3>
+        <div id="skillTree"></div>
+      </aside>
+      <div class="topic-list" id="topicList" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>iOSPath, Internet ve Web Programlama I proje prototipi için hazırlanmıştır.</p>
+  </footer>
+
+  <script src="js/iospath-data.js"></script>
+  <script src="js/iospath-storage.js"></script>
+  <script src="js/iospath-app.js"></script>
+</body>
+</html>
